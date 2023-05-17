@@ -1,6 +1,7 @@
 package com.project.client.util;
 
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -16,7 +17,10 @@ public class Utility {
 
     public String sendPost(String url, String data) {
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> responseEntity = restTemplate.postForEntity(url, new HttpEntity<>(data), String.class);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json");
+        headers.add("Accept", "application/json");
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity(url, new HttpEntity<>(data, headers), String.class);
         return responseEntity.getBody();
     }
 }

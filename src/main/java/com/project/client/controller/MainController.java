@@ -1,6 +1,7 @@
 package com.project.client.controller;
 
 import com.project.client.service.AccountService;
+import com.project.client.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,10 +15,15 @@ public class MainController {
 
     private final AccountService accountService;
 
-    @PostMapping("/getCustomerList")
-    public ModelAndView getCustomerList() {
-        ModelAndView modelAndView = new ModelAndView();
-        return modelAndView;
+    private final CustomerService customerService;
+
+
+
+    @GetMapping("/getCustomerList")
+    public void getCustomerList() {
+//        ModelAndView model = new ModelAndView();
+        String result = customerService.getCustomerList();
+        System.out.println(result);
     }
 
     @GetMapping("/getAccountList/{customerId}")

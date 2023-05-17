@@ -36,7 +36,7 @@ public class CustomerServiceImpl implements CustomerService {
             String reqLoginJson = objectMapper.writeValueAsString(reqLogin);
             String result = utility.sendPost(apiUrl + "user/login", reqLoginJson);
         } catch (Exception ex) {
-
+            ex.printStackTrace();
         }
         return null;
     }
