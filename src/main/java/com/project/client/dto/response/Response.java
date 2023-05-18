@@ -1,9 +1,12 @@
 package com.project.client.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+import lombok.*;
 
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Response<T> {
 
     @JsonProperty(value = "response")

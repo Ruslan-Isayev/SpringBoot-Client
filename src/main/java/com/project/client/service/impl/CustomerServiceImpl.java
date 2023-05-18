@@ -51,7 +51,7 @@ public class CustomerServiceImpl implements CustomerService {
             String reqTokenJson = objectMapper.writeValueAsString(response.getT().getRespToken());
             String customerListResult = utility.sendPost(apiUrl + "customer/getCustomerList", reqTokenJson);
             resp = objectMapper.readValue(customerListResult, new TypeReference<Response<List<RespCustomer>>>() {});
-
+            System.out.println(resp);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
