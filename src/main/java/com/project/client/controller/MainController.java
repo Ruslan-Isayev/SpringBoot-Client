@@ -1,5 +1,6 @@
 package com.project.client.controller;
 
+import com.project.client.dto.response.RespAccount;
 import com.project.client.dto.response.RespCustomer;
 import com.project.client.dto.response.Response;
 import com.project.client.service.AccountService;
@@ -34,8 +35,14 @@ public class MainController {
     }
 
     @GetMapping("/getAccountList/{customerId}")
-    public void getAccountList(@PathVariable Long customerId) {
-        String result = accountService.getAccountList(customerId);
-        System.out.println(result);
+    public ModelAndView getAccountList(@PathVariable Long customerId) {
+        ModelAndView model = new ModelAndView("account");
+        Response<List<RespAccount>> result = accountService.getAccountList(customerId);
+        if (result.getStatus().getCode() == 1) {
+            model.addObject("result", result.getT());
+        } else {
+            model.addObject("message", result.getStatus().getMessage());
+        }
+        return model;
     }
 }

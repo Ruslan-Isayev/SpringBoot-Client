@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -15,19 +16,21 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Surname</th>
-                <th>Dob</th>
-                <th>Phone</th>
-                <th>Cif</th>
+                <th>AccountNo</th>
+                <th>Iban</th>
+                <th>Currency</th>
+                <th>BranchCode</th>
+                <th>CustomerFullName</th>
             </tr>
             <c:forEach items="${result}" var="r">
                 <tr>
-                    <td>${r.customerId}</td>
+                    <td>${r.id}</td>
                     <td>${r.name}</td>
-                    <td>${r.surname}</td>
-                    <td>${r.dob}</td>
-                    <td>${r.phone}</td>
-                    <td>${r.cif}</td>
+                    <td>${r.accountNo}</td>
+                    <td>${r.iban}</td>
+                    <td>${r.currency}</td>
+                    <td>${r.branchCode}</td>
+                    <td>${r.respCustomer.name} ${r.respCustomer.surname}</td>
                 </tr>
             </c:forEach>
         </table>
