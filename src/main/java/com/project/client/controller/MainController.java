@@ -21,11 +21,15 @@ public class MainController {
     private final CustomerService customerService;
 
 
-    @GetMapping("/getCustomerList")
+    @GetMapping({"/", "/getCustomerList"})
     public ModelAndView getCustomerList() {
-        ModelAndView model = new ModelAndView();
+        ModelAndView model = new ModelAndView("index");
         Response<List<RespCustomer>> result = customerService.getCustomerList();
-        model.addObject("result", result);
+        if (result.getStatus().getCode() == 1) {
+            model.addObject("result", result.getT());
+        } else {
+            model.addObject("message", result.getStatus().getMessage());
+        }
         return model;
     }
 
