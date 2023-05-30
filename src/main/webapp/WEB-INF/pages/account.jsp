@@ -12,7 +12,7 @@
     </c:when>
 
     <c:otherwise>
-        <table style="width: 100%" border="1px">
+        <table style="width: 100%" border="1">
             <tr>
                 <th>Id</th>
                 <th>Name</th>
@@ -30,7 +30,7 @@
                     <td>${r.iban}</td>
                     <td>${r.currency}</td>
                     <td>${r.branchCode}</td>
-                    <td>${r.respCustomer.name} ${r.respCustomer.surname}</td>
+                    <td>${r.customer.name} ${r.customer.surname}</td>
                 </tr>
             </c:forEach>
         </table>

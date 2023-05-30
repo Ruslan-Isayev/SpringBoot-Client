@@ -1,0 +1,11 @@
+server:
+  port: 8092
+  servlet:
+    context-path: /client
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/pages/
+      suffix: .jsp
+      view-class: org.springframework.web.servlet.view.JstlView
